@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #258C0F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.PerfilViewController">
+   <children>
+      <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="475.0" prefWidth="775.0" style="-fx-background-color: #FCFCFC;">
+         <children>
+            <Label layoutX="175.0" layoutY="145.0" text="Cedula:" />
+            <Label layoutX="175.0" layoutY="225.0" text="Nombre:" />
+            <Label layoutX="175.0" layoutY="185.0" text="Contraseña:" />
+            <Label layoutX="175.0" layoutY="265.0" text="Correo:" />
+            <Label layoutX="175.0" layoutY="305.0" text="Numero:" />
+            <TextField fx:id="txtCedula" layoutX="294.0" layoutY="140.0" />
+            <TextField fx:id="txtNombre" layoutX="295.0" layoutY="220.0" />
+            <Button fx:id="btnModificar" layoutX="346.0" layoutY="405.0" mnemonicParsing="false" onAction="#OnModificar" text="Modificar" />
+            <Label layoutX="175.0" layoutY="345.0" text="Direccion:" />
+            <ImageView fx:id="imgBilletico" fitHeight="112.0" fitWidth="309.0" layoutX="332.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Image/Billetico.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtCorreo" layoutX="295.0" layoutY="260.0" />
+            <TextField fx:id="txtNumero" layoutX="295.0" layoutY="300.0" />
+            <TextField fx:id="txtDireccion" layoutX="294.0" layoutY="340.0" />
+            <PasswordField fx:id="pdContrasena" layoutX="295.0" layoutY="180.0" />
+            <Label fx:id="lbMensaje" layoutX="271.0" layoutY="378.0" prefHeight="21.0" prefWidth="233.0" textFill="#36e43f" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

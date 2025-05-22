@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.AdminViewController">
+    <children>
+        <TabPane layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="800.0">
+            <tabs>
+                <Tab text="Usuarios">
+                    <content>
+                        <fx:include source="Usuarios.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Cuentas">
+                    <content>
+                        <fx:include source="Cuentas.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Transacciones">
+                    <content>
+                        <fx:include source="Transacciones.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Estadisticas">
+                    <content>
+                        <fx:include source="Estadisticas.fxml" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #258C0F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.RegisterViewController">
+   <children>
+      <AnchorPane layoutX="183.0" layoutY="18.0" prefHeight="465.0" prefWidth="435.0" style="-fx-background-color: #FCFCFC;">
+         <children>
+            <Button fx:id="btnRegistrar" layoutX="184.0" layoutY="378.0" mnemonicParsing="false" text="Registrar" />
+            <Label layoutX="65.0" layoutY="297.0" text="Cedula:" />
+            <TextField fx:id="txtTelefono" layoutX="153.0" layoutY="202.0" />
+            <TextField fx:id="txtDireccion" layoutX="153.0" layoutY="247.0" />
+            <Label layoutX="65.0" layoutY="116.0" text="Nombre:" />
+            <Label layoutX="65.0" layoutY="163.0" text="Correo:" />
+            <Label layoutX="65.0" layoutY="207.0" text="Teléfono:" />
+            <Label layoutX="65.0" layoutY="254.0" text="Dirección:" />
+            <TextField fx:id="txtCorreo" layoutX="153.0" layoutY="157.0" />
+            <TextField fx:id="txtNombre" layoutX="153.0" layoutY="112.0" />
+            <TextField fx:id="txtCedula" layoutX="153.0" layoutY="292.0" />
+            <ImageView fx:id="imgBilletico" fitHeight="112.0" fitWidth="309.0" layoutX="168.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Image/Billetico.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="65.0" layoutY="342.0" text="Contraseña:" />
+            <PasswordField fx:id="pdContrasena" layoutX="153.0" layoutY="337.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

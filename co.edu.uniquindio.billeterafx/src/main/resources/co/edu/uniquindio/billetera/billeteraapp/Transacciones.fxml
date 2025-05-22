@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #258c0f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.TransaccionesViewController">
+   <children>
+      <AnchorPane layoutX="13.0" layoutY="13.0" prefHeight="475.0" prefWidth="775.0" style="-fx-background-color: #F4F4F4;">
+         <children>
+            <Button fx:id="btnRealizarTransaccion" layoutX="288.0" layoutY="203.0" mnemonicParsing="false" text="Realizar Transacción" />
+            <Label fx:id="lbFecha" layoutX="30.0" layoutY="52.0" text="Fecha:" />
+            <Label fx:id="lbTipo" layoutX="449.0" layoutY="52.0" text="Tipo:" />
+            <Label fx:id="lbID" layoutX="254.0" layoutY="52.0" text="ID:" />
+            <Label layoutX="30.0" layoutY="105.0" text="Cuenta Origen:" />
+            <Label layoutX="377.0" layoutY="105.0" text="Cuenta Destino:" />
+            <Label layoutX="30.0" layoutY="151.0" text="Monto:" />
+            <TextField fx:id="txtMonto" layoutX="145.0" layoutY="146.0" />
+            <ComboBox fx:id="cbCuentaOrigen" layoutX="145.0" layoutY="100.0" prefHeight="31.0" prefWidth="187.0" promptText="Seleccione la cuenta" />
+            <ComboBox fx:id="cbCuentaDestino" layoutX="512.0" layoutY="100.0" prefHeight="31.0" prefWidth="187.0" promptText="Seleccione la cuenta" />
+            <TextArea fx:id="txtMensaje" layoutX="22.0" layoutY="245.0" prefHeight="209.0" prefWidth="732.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
