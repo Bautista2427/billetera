@@ -1,5 +1,6 @@
 package co.edu.uniquindio.billetera.billeteraapp.utils;
 
+import co.edu.uniquindio.billetera.billeteraapp.model.PrestamoObjeto;
 import co.edu.uniquindio.billetera.billeteraapp.model.Usuario;
 import co.edu.uniquindio.billetera.billeteraapp.model.builder.UsuarioBuilder;
 
@@ -71,9 +72,9 @@ public class DataUtil {
                 .build());
     }
 
-    public static Usuario validarCredenciales(String cedula, String contraseña) {
+    public static Usuario validarCredenciales(String cedula, String contrasena) {
         for (Usuario u : listaUsuarios) {
-            if (u.getCedula().equals(cedula) && u.getContrasena().equals(contraseña)) {
+            if (u.getCedula().equals(cedula) && u.getContrasena().equals(contrasena)) {
                 return u;
             }
         }
@@ -82,5 +83,13 @@ public class DataUtil {
 
     public static List<Usuario> getUsuarios() {
         return listaUsuarios;
+    }
+
+    public static PrestamoObjeto inicializarDatos() {
+        PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
+        for (Usuario usuario : listaUsuarios) {
+            prestamoObjeto.crearUsuario(usuario);
+        }
+        return prestamoObjeto;
     }
 }

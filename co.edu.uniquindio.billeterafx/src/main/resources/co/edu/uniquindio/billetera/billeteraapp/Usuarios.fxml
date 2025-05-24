@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -13,32 +10,32 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="166.0" prefWidth="730.0">
                <children>
                   <Label layoutX="101.0" layoutY="43.0" text="Cedula:" />
-                  <TextField layoutX="176.0" layoutY="38.0" />
+                  <TextField fx:id="txtCedula" layoutX="176.0" layoutY="38.0" />
                   <Label layoutX="101.0" layoutY="94.0" text="Nombre:" />
                   <Label layoutX="415.0" layoutY="42.0" text="Correo:" />
-                  <TextField layoutX="176.0" layoutY="89.0" />
-                  <TextField layoutX="485.0" layoutY="37.0" />
+                  <TextField fx:id="txtNombre" layoutX="176.0" layoutY="89.0" />
+                  <TextField fx:id="txtCorreo" layoutX="485.0" layoutY="37.0" />
                   <Label layoutX="415.0" layoutY="93.0" text="Teléfono:" />
-                  <TextField layoutX="485.0" layoutY="88.0" />
+                  <TextField fx:id="txtTelefono" layoutX="485.0" layoutY="88.0" />
                   <TextField layoutX="485.0" layoutY="138.0" />
                   <Label layoutX="101.0" layoutY="144.0" text="Dirección:" />
-                  <TextField layoutX="176.0" layoutY="139.0" />
+                  <TextField fx:id="txtDireccion" layoutX="176.0" layoutY="139.0" />
                   <Label layoutX="415.0" layoutY="143.0" text="Saldo:" />
-                  <Button layoutX="144.0" layoutY="188.0" mnemonicParsing="false" text="Nuevo" />
-                  <Button layoutX="350.0" layoutY="188.0" mnemonicParsing="false" text="Agregar" />
-                  <Button layoutX="562.0" layoutY="188.0" mnemonicParsing="false" text="Actualizar" />
+                  <Button fx:id="btnNuevo" layoutX="144.0" layoutY="188.0" mnemonicParsing="false" onAction="#OnNuevo" text="Nuevo" />
+                  <Button fx:id="btnAgregar" layoutX="350.0" layoutY="188.0" mnemonicParsing="false" onAction="#OnAgregar" text="Agregar" />
+                  <Button fx:id="btnActualizar" layoutX="562.0" layoutY="188.0" mnemonicParsing="false" onAction="#OnActualizar" text="Actualizar" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="674.0" layoutY="187.0" mnemonicParsing="false" text="Eliminar" />
-                  <TableView layoutX="11.0" layoutY="14.0" prefHeight="169.0" prefWidth="752.0">
-                    <columns>
-                      <TableColumn prefWidth="131.0" text="Cedula" />
-                      <TableColumn minWidth="0.0" prefWidth="139.0" text="Nombre" />
-                        <TableColumn minWidth="0.0" prefWidth="167.0" text="Correo" />
-                        <TableColumn prefWidth="151.0" text="Teléfono" />
-                        <TableColumn prefWidth="166.0" text="Direccion" />
+                  <Button fx:id="btnEliminar" layoutX="674.0" layoutY="187.0" mnemonicParsing="false" onAction="#OnEliminar" text="Eliminar" />
+                   <TableView fx:id="tableUsuario" layoutX="11.0" layoutY="14.0" prefHeight="169.0" prefWidth="752.0">
+                   <columns>
+                      <TableColumn fx:id="tcCedula" prefWidth="131.0" text="Cedula" />
+                      <TableColumn fx:id="tcNombre" minWidth="0.0" prefWidth="139.0" text="Nombre" />
+                        <TableColumn fx:id="tcCorreo" minWidth="0.0" prefWidth="167.0" text="Correo" />
+                        <TableColumn fx:id="tcTelefono" prefWidth="151.0" text="Teléfono" />
+                        <TableColumn fx:id="tcDireccion" prefWidth="166.0" text="Direccion" />
                         <TableColumn minWidth="0.0" prefWidth="0.0" text="Saldo" />
                     </columns>
                   </TableView>

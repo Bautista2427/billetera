@@ -1,5 +1,7 @@
 package co.edu.uniquindio.billetera.billeteraapp.model;
 
+import co.edu.uniquindio.billetera.billeteraapp.model.builder.UsuarioBuilder;
+
 public class Usuario {
     private String cedula;
     private String contrasena;
@@ -95,5 +97,9 @@ public class Usuario {
 
     public boolean esAdmin() {
         return esAdmin;
+    }
+
+    public static UsuarioBuilder builder() {
+        return new UsuarioBuilder();
     }
 }
