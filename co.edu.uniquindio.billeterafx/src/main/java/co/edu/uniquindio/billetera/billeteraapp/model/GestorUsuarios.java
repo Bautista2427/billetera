@@ -3,14 +3,14 @@ package co.edu.uniquindio.billetera.billeteraapp.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrestamoObjeto {
+public class GestorUsuarios {
 
     List<Usuario> listaUsuarios = new ArrayList<>();
 
     private String nombre;
 
 
-    public PrestamoObjeto() {
+    public GestorUsuarios() {
     }
 
     public boolean crearUsuario(String cedula,
@@ -90,5 +90,23 @@ public class PrestamoObjeto {
         }else{
             return false;
         }
+    }
+
+    public Usuario validarCredenciales(String cedula, String contrasena) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getCedula().equals(cedula) && usuario.getContrasena().equals(contrasena)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public Usuario obtenerUsuarioPorCredenciales(String cedula, String contrasena) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getCedula().equals(cedula) && usuario.getContrasena().equals(contrasena)) {
+                return usuario;
+            }
+        }
+        return null;
     }
 }

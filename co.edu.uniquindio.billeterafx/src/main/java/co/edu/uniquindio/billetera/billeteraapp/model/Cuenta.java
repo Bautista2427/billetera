@@ -1,18 +1,20 @@
 package co.edu.uniquindio.billetera.billeteraapp.model;
 
+import co.edu.uniquindio.billetera.billeteraapp.model.builder.CuentaBuilder;
+
 public class Cuenta {
     private String idCuenta;
     private String nombreBanco;
-    private String correoCuenta;
+    private String numeroCuenta;
     private String tipoCuenta;
 
     public Cuenta(String idCuenta,
                   String nombreBanco,
-                  String correoCuenta,
+                  String numeroCuenta,
                   String tipoCuenta) {
         this.idCuenta = idCuenta;
         this.nombreBanco = nombreBanco;
-        this.correoCuenta = correoCuenta;
+        this.numeroCuenta = numeroCuenta;
         this.tipoCuenta = tipoCuenta;
     }
 
@@ -32,12 +34,12 @@ public class Cuenta {
         this.nombreBanco = nombreBanco;
     }
 
-    public String getCorreoCuenta() {
-        return correoCuenta;
+    public String getNumeroCuenta() {
+        return numeroCuenta;
     }
 
-    public void setCorreoCuenta(String correoCuenta) {
-        this.correoCuenta = correoCuenta;
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
     }
 
     public String getTipoCuenta() {
@@ -47,4 +49,9 @@ public class Cuenta {
     public void setTipoCuenta(String tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
+
+    public static CuentaBuilder builder() {
+        return new CuentaBuilder();
+    }
+
 }

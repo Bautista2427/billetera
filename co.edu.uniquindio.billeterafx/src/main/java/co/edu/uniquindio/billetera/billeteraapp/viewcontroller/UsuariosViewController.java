@@ -72,22 +72,22 @@ public class UsuariosViewController {
 
     @FXML
     void OnNuevo(ActionEvent event) {
-        nuevoCliente();
+        nuevoUsuario();
     }
 
     @FXML
     void OnAgregar(ActionEvent event) {
-
+        agregarUsuario();
     }
 
     @FXML
     void OnActualizar(ActionEvent event) {
-
+        actualizarUsuario();
     }
 
     @FXML
     void OnEliminar(ActionEvent event) {
-
+        eliminarUsuario();
     }
 
     private void initView() {
@@ -125,7 +125,7 @@ public class UsuariosViewController {
         if(datosValidos(usuarioDto)){
             //4. Solicitar crear usuario
             if(usuarioController.agregarUsuario(usuarioDto)){
-                listaUsuarios.addAll(usuarioDto);
+                listaUsuarios.add(usuarioDto);
                 limpiarCampos();
                 mostrarMensaje(TITULO_USUARIO_AGREGADO, HEADER, BODY_USUARIO_AGREGADO, Alert.AlertType.INFORMATION);
             }else{
@@ -134,6 +134,20 @@ public class UsuariosViewController {
         }else{
             //mensaje de notificacion de campos incompletos
             mostrarMensaje(TITULO_INCOMPLETO, HEADER, BODY_INCOMPLETO,Alert.AlertType.WARNING);
+        }
+    }
+
+    private void actualizarUsuario() {
+        if (usuarioSeleccionado != null) {
+            UsuarioDto usuarioDto = crearUsuarioDto();
+            if (usuarioController.actualizarUsuario(usuarioDto)) {
+                int index = listaUsuarios.indexOf(usuarioSeleccionado);
+                listaUsuarios.set(index, usuarioDto);
+                limpiarCampos();
+                mostrarMensaje("Usuario actualizado", "", "El usuario se actualizó correctamente", Alert.AlertType.INFORMATION);
+            } else {
+                mostrarMensaje("Error al actualizar", "", "No se pudo actualizar el usuario", Alert.AlertType.ERROR);
+            }
         }
     }
 
@@ -149,9 +163,9 @@ public class UsuariosViewController {
         }
     }
 
-    private void nuevoCliente() {
+    private void nuevoUsuario() {
         limpiarCampos();
-        txtNombre.setText("Ingrese un nombre");
+        txtNombre.setText("");
     }
 
     private void limpiarCampos() {
@@ -164,11 +178,15 @@ public class UsuariosViewController {
 
     private UsuarioDto crearUsuarioDto() {
         return new UsuarioDto(
-                txtNombre.getText(),
                 txtCedula.getText(),
+                "defaultPassword",
+                false,
+                txtNombre.getText(),
                 txtCorreo.getText(),
                 txtTelefono.getText(),
-                txtDireccion.getText());
+                txtDireccion.getText(),
+                "0"
+        );
     }
 
     private boolean datosValidos(UsuarioDto usuarioDto) {
@@ -208,10 +226,6 @@ public class UsuariosViewController {
         alert.setTitle("Confirmación");
         alert.setContentText(mensaje);
         Optional<ButtonType> action = alert.showAndWait();
-        if (action.get() == ButtonType.OK) {
-            return true;
-        } else {
-            return false;
-        }
+        return action.get() == ButtonType.OK;
     }
 }

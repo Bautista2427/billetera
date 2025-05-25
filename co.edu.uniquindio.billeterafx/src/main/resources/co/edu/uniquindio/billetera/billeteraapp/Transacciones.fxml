@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #258c0f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.TransaccionesViewController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #258c0f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.TransaccionesViewController">
    <children>
       <AnchorPane layoutX="13.0" layoutY="13.0" prefHeight="475.0" prefWidth="775.0" style="-fx-background-color: #F4F4F4;">
          <children>

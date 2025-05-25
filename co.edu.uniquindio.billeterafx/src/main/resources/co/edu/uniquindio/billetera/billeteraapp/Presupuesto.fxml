@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.PresupuestoViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #258c0f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billetera.billeteraapp.viewcontroller.PresupuestoViewController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="475.0" prefWidth="775.0" />
+   </children>
 </AnchorPane>

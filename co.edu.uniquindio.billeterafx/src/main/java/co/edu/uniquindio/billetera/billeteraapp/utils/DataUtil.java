@@ -1,15 +1,22 @@
 package co.edu.uniquindio.billetera.billeteraapp.utils;
 
-import co.edu.uniquindio.billetera.billeteraapp.model.PrestamoObjeto;
+import co.edu.uniquindio.billetera.billeteraapp.model.Cuenta;
+import co.edu.uniquindio.billetera.billeteraapp.model.GestorCuentas;
+import co.edu.uniquindio.billetera.billeteraapp.model.GestorUsuarios;
 import co.edu.uniquindio.billetera.billeteraapp.model.Usuario;
 import co.edu.uniquindio.billetera.billeteraapp.model.builder.UsuarioBuilder;
+import co.edu.uniquindio.billetera.billeteraapp.model.builder.CuentaBuilder;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class DataUtil {
 
     private static final List<Usuario> listaUsuarios = new ArrayList<>();
+    private static final List<Cuenta> listaCuentas = new ArrayList<>();
+
 
     static {
         listaUsuarios.add(new UsuarioBuilder()
@@ -70,6 +77,35 @@ public class DataUtil {
                 .esAdmin(false)
                 .nombreCompleto("Luis Gómez")
                 .build());
+
+        crearCuentaParaUsuario("2001", "Scotibank", "1232752", "Ahorros");
+        crearCuentaParaUsuario("2001", "Bancolombia", "2752572", "Ahorros");
+        crearCuentaParaUsuario("2002", "Nu Bannk", "1200275720", "Ahorros");
+        crearCuentaParaUsuario("2003", "Nequi", "257275", "Ahorros");
+        crearCuentaParaUsuario("2004", "Davivienda", "257227257", "Ahorros");
+        crearCuentaParaUsuario("2005", "Estado", "572257272", "Ahorros");
+    }
+
+    private static void crearCuentaParaUsuario(String idCuenta, String nombreBanco, String numeroCuenta, String tipoCuenta) {
+        String idCuentaGenerado = UUID.randomUUID().toString();
+
+        Cuenta cuenta = new CuentaBuilder()
+                .idCuenta(idCuenta)
+                .nombreBanco(nombreBanco)
+                .numeroCuenta(numeroCuenta)
+                .tipoCuenta(tipoCuenta)
+                .build();
+
+        listaCuentas.add(cuenta);
+
+        Usuario usuario = listaUsuarios.stream()
+                .filter(u -> u.getCedula().equals(idCuenta))
+                .findFirst()
+                .orElse(null);
+
+        if (usuario != null) {
+            usuario.getlistaCuentas().add(cuenta);
+        }
     }
 
     public static Usuario validarCredenciales(String cedula, String contrasena) {
@@ -81,15 +117,20 @@ public class DataUtil {
         return null;
     }
 
-    public static List<Usuario> getUsuarios() {
-        return listaUsuarios;
+
+    public static GestorUsuarios inicializarDatos() {
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
+        for (Usuario usuario : listaUsuarios) {
+            gestorUsuarios.crearUsuario(usuario);
+        }
+        return gestorUsuarios;
     }
 
-    public static PrestamoObjeto inicializarDatos() {
-        PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
-        for (Usuario usuario : listaUsuarios) {
-            prestamoObjeto.crearUsuario(usuario);
+    public static GestorCuentas inicializarDatosCuentas() {
+        GestorCuentas gestorCuentas = new GestorCuentas();
+        for (Cuenta cuenta : listaCuentas) {
+            gestorCuentas.crearCuenta(cuenta);
         }
-        return prestamoObjeto;
+        return gestorCuentas;
     }
 }

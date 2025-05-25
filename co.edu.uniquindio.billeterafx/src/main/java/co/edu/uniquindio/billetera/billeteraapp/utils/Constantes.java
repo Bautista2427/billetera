@@ -27,4 +27,10 @@ public class Constantes {
     public static final String TITULO_USUARIO_ELIMINADO= "Usuario eliminado";
     public static final String BODY_USUARIO_NO_AGREGADO = "El usuario no se agregro, ya existe";
     public static final String BODY_USUARIO_AGREGADO = "El usuario se agregro con èxito";
+
+    public static final String TITULO_CUENTA_NO_AGREGADO = "Cuenta no agregada";
+    public static final String TITULO_CUENTA_AGREGADO = "Cuenta agregada";
+    public static final String TITULO_CUENTA_ELIMINADO= "Cuenta eliminada";
+    public static final String BODY_CUENTA_NO_AGREGADO = "La cuenta no se agregro, ya existe";
+    public static final String BODY_CUENTA_AGREGADO = "La cuenta se agregro con èxito";
 }

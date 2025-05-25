@@ -2,6 +2,9 @@ package co.edu.uniquindio.billetera.billeteraapp.model;
 
 import co.edu.uniquindio.billetera.billeteraapp.model.builder.UsuarioBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
     private String cedula;
     private String contrasena;
@@ -12,6 +15,7 @@ public class Usuario {
     private String direccion;
     private String saldo;
 
+    private List<Cuenta> listaCuentas;
 
     public Usuario(String cedula,
                    String contrasena,
@@ -29,6 +33,15 @@ public class Usuario {
         this.numeroTelefono = numeroTelefono;
         this.direccion = direccion;
         this.saldo = saldo;
+        this.listaCuentas = new ArrayList<>();
+    }
+
+    public List<Cuenta> getlistaCuentas() {
+        return listaCuentas;
+    }
+
+    public void setlistaCuentas(List<Cuenta> listaCuentas) {
+        this.listaCuentas = listaCuentas;
     }
 
     public String getCedula() {
@@ -101,5 +114,9 @@ public class Usuario {
 
     public static UsuarioBuilder builder() {
         return new UsuarioBuilder();
+    }
+
+    public List<Cuenta> getListaCuentas() {
+        return listaCuentas;
     }
 }

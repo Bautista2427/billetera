@@ -1,6 +1,7 @@
 package co.edu.uniquindio.billetera.billeteraapp.viewcontroller;
 
 import co.edu.uniquindio.billetera.billeteraapp.factory.ModelFactory;
+import co.edu.uniquindio.billetera.billeteraapp.model.GestorUsuarios;
 import co.edu.uniquindio.billetera.billeteraapp.model.Usuario;
 import co.edu.uniquindio.billetera.billeteraapp.utils.DataUtil;
 import javafx.event.ActionEvent;
@@ -42,12 +43,19 @@ public class LoginViewController {
         String cedula = txtCedula.getText();
         String contrasena = pdContrasena.getText();
 
-        Usuario usuario = DataUtil.validarCredenciales(cedula, contrasena);
+        Usuario usuario = null;
+
+        GestorUsuarios gestorUsuarios = ModelFactory.getInstancia().getGestorUsuarios();
+        usuario = gestorUsuarios.obtenerUsuarioPorCredenciales(cedula, contrasena);
+
+        if (usuario == null) {
+            usuario = DataUtil.validarCredenciales(cedula, contrasena);
+        }
 
         if (usuario != null) {
             ModelFactory.getInstancia().setUsuarioActual(usuario);
 
-            String rutaFXML = usuario.esAdmin()
+            String rutaFXML = usuario.isEsAdmin()
                     ? "/co/edu/uniquindio/billetera/billeteraapp/Admin.fxml"
                     : "/co/edu/uniquindio/billetera/billeteraapp/User.fxml";
 
@@ -60,6 +68,7 @@ public class LoginViewController {
                 stage.show();
             } catch (Exception e) {
                 logger.log(Level.SEVERE, "Error al cargar la vista", e);
+                lbMensaje.setText("Error al cargar la vista.");
             }
         } else {
             lbMensaje.setText("Credenciales inválidas");

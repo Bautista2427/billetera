@@ -14,4 +14,16 @@ public class UsuarioController {
     public List<UsuarioDto> obtenerUsuarios() {
         return modelFactory.obtenerUsuarios();
     }
+
+    public boolean agregarUsuario(UsuarioDto usuarioDto) {
+        return modelFactory.agregarUsuario(usuarioDto);
+    }
+
+    public boolean actualizarUsuario(UsuarioDto usuarioDto) {
+        return modelFactory.actualizarUsuario(usuarioDto);
+    }
+
+    public boolean eliminarUsuario(String cedula) {
+        return modelFactory.eliminarUsuario(cedula);
+    }
 }
