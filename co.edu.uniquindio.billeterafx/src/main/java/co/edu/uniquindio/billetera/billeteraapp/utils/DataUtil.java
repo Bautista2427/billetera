@@ -79,6 +79,7 @@ public class DataUtil {
                 .build());
 
         crearCuentaParaUsuario("2001", "Scotibank", "1232752", "Ahorros");
+        crearCuentaParaUsuario("2001", "Nequi", "2572321", "Corriente");
         crearCuentaParaUsuario("2001", "Bancolombia", "2752572", "Ahorros");
         crearCuentaParaUsuario("2002", "Nu Bannk", "1200275720", "Ahorros");
         crearCuentaParaUsuario("2003", "Nequi", "257275", "Ahorros");
@@ -95,6 +96,24 @@ public class DataUtil {
                 .numeroCuenta(numeroCuenta)
                 .tipoCuenta(tipoCuenta)
                 .build();
+
+        double saldoInicial;
+
+        switch (nombreBanco) {
+            case "Scotibank":
+                saldoInicial = 10000.0;
+                break;
+            case "Nequi":
+                saldoInicial = 20000.0;
+                break;
+            case "Bancolombia":
+                saldoInicial = 15000.0;
+                break;
+            default:
+                saldoInicial = 50000.0;
+        }
+
+        cuenta.setSaldo(saldoInicial);
 
         listaCuentas.add(cuenta);
 

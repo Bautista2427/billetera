@@ -5,5 +5,6 @@ public record CuentaDto(
         String nombreBanco,
         String numeroCuenta,
         String tipoCuenta
+        //String Saldo
 ) {
 }

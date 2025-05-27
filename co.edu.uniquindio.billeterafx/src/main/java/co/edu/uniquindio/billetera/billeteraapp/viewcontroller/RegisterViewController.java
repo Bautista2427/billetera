@@ -16,8 +16,6 @@ public class RegisterViewController {
     @FXML
     private Button btnRegistrar;
 
-    @FXML
-    private ImageView imgBilletico;
 
     @FXML
     private Label lbMensaje;

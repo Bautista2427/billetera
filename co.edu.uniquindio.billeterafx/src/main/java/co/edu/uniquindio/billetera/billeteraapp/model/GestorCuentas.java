@@ -25,14 +25,9 @@ public class GestorCuentas {
         }
     }
 
-    public boolean crearCuenta(Cuenta nuevaCuenta){
-        Cuenta cuentaEncontrado = obtenerCuenta(nuevaCuenta.getIdCuenta());
-        if(cuentaEncontrado == null){
-            getListaCuentas().add(nuevaCuenta);
-            return true;
-        }else{
-            return  false;
-        }
+    public boolean crearCuenta(Cuenta nuevaCuenta) {
+        getListaCuentas().add(nuevaCuenta);
+        return true;
     }
 
     private Cuenta getBuildCuenta(String idCuenta, String nombreBanco, String numeroCuenta, String tipoCuenta) {
@@ -56,6 +51,7 @@ public class GestorCuentas {
         return cuenta;
     }
 
+
     public List<Cuenta> getListaCuentas() {
         return listaCuentas;
     }
@@ -71,6 +67,7 @@ public class GestorCuentas {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 
     public boolean eliminarCuenta(String idCuenta) {
         Cuenta cuentaEncontrada = obtenerCuenta(idCuenta);

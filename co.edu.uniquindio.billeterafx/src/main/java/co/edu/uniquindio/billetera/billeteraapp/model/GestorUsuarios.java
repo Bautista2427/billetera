@@ -66,6 +66,7 @@ public class GestorUsuarios {
         return usuario;
     }
 
+
     public List<Usuario> getListaUsuarios() {
         return listaUsuarios;
     }
@@ -82,6 +83,7 @@ public class GestorUsuarios {
         this.nombre = nombre;
     }
 
+
     public boolean eliminarUsuario(String cedula) {
         Usuario usuarioEncontrado = obtenerUsuario(cedula);
         if(usuarioEncontrado !=null){
@@ -90,15 +92,6 @@ public class GestorUsuarios {
         }else{
             return false;
         }
-    }
-
-    public Usuario validarCredenciales(String cedula, String contrasena) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getCedula().equals(cedula) && usuario.getContrasena().equals(contrasena)) {
-                return usuario;
-            }
-        }
-        return null;
     }
 
     public Usuario obtenerUsuarioPorCredenciales(String cedula, String contrasena) {

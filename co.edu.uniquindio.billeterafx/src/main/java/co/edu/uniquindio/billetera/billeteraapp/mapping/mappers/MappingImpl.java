@@ -17,7 +17,7 @@ public class MappingImpl implements IMapping {
         if(listaUsuarios == null){
             return null;
         }
-        List<UsuarioDto> listaUsuariosDto = new ArrayList<UsuarioDto>(listaUsuarios.size());
+        List<UsuarioDto> listaUsuariosDto = new ArrayList<>(listaUsuarios.size());
         for (Usuario usuario : listaUsuarios) {
             listaUsuariosDto.add(usuarioToUsuarioDto(usuario));
         }
@@ -53,15 +53,12 @@ public class MappingImpl implements IMapping {
     }
 
 
-
-
-
     @Override
     public List<CuentaDto> getCuentasDto(List<Cuenta> listaCuentas) {
         if(listaCuentas == null){
             return null;
         }
-        List<CuentaDto> listaCuentasDto = new ArrayList<CuentaDto>(listaCuentas.size());
+        List<CuentaDto> listaCuentasDto = new ArrayList<>(listaCuentas.size());
         for (Cuenta cuenta : listaCuentas) {
             listaCuentasDto.add(cuentaToCuentaDto(cuenta));
         }

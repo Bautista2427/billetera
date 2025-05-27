@@ -11,17 +11,20 @@
    <children>
       <AnchorPane layoutX="13.0" layoutY="13.0" prefHeight="475.0" prefWidth="775.0" style="-fx-background-color: #F4F4F4;">
          <children>
-            <Button fx:id="btnRealizarTransaccion" layoutX="288.0" layoutY="203.0" mnemonicParsing="false" text="Realizar Transacción" />
-            <Label fx:id="lbFecha" layoutX="30.0" layoutY="52.0" text="Fecha:" />
-            <Label fx:id="lbTipo" layoutX="449.0" layoutY="52.0" text="Tipo:" />
-            <Label fx:id="lbID" layoutX="254.0" layoutY="52.0" text="ID:" />
-            <Label layoutX="30.0" layoutY="105.0" text="Cuenta Origen:" />
-            <Label layoutX="377.0" layoutY="105.0" text="Cuenta Destino:" />
-            <Label layoutX="30.0" layoutY="151.0" text="Monto:" />
-            <TextField fx:id="txtMonto" layoutX="145.0" layoutY="146.0" />
-            <ComboBox fx:id="cbCuentaOrigen" layoutX="145.0" layoutY="100.0" prefHeight="31.0" prefWidth="187.0" promptText="Seleccione la cuenta" />
-            <ComboBox fx:id="cbCuentaDestino" layoutX="512.0" layoutY="100.0" prefHeight="31.0" prefWidth="187.0" promptText="Seleccione la cuenta" />
+            <Button fx:id="btnRealizarTransaccion" layoutX="311.0" layoutY="200.0" mnemonicParsing="false" onAction="#OnRealizarTransaccion" text="Realizar Transacción" />
+            <Label layoutX="14.0" layoutY="48.0" text="Fecha:" />
+            <Label layoutX="535.0" layoutY="48.0" text="Tipo:" />
+            <Label layoutX="288.0" layoutY="48.0" text="ID:" />
+            <Label layoutX="61.0" layoutY="116.0" text="Cuenta Origen:" />
+            <Label layoutX="408.0" layoutY="116.0" text="Cuenta Destino:" />
+            <Label layoutX="61.0" layoutY="162.0" text="Monto:" />
+            <TextField fx:id="txtMonto" layoutX="176.0" layoutY="157.0" />
+            <ComboBox fx:id="cbCuentaOrigen" layoutX="176.0" layoutY="111.0" prefHeight="31.0" prefWidth="187.0" promptText="Seleccione la cuenta" />
+            <ComboBox fx:id="cbCuentaDestino" layoutX="527.0" layoutY="111.0" prefHeight="31.0" prefWidth="187.0" promptText="Seleccione la cuenta" />
             <TextArea fx:id="txtMensaje" layoutX="22.0" layoutY="245.0" prefHeight="209.0" prefWidth="732.0" />
+            <TextField fx:id="txtFecha" layoutX="63.0" layoutY="43.0" />
+            <TextField fx:id="txtId" layoutX="312.0" layoutY="43.0" />
+            <TextField fx:id="txtTipo" layoutX="574.0" layoutY="43.0" />
          </children>
       </AnchorPane>
    </children>

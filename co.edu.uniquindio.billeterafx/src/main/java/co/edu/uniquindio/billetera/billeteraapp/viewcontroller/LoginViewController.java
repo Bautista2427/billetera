@@ -26,8 +26,6 @@ public class LoginViewController {
     @FXML
     private Button btnIngresar;
 
-    @FXML
-    private ImageView imgBilletico;
 
     @FXML
     private Label lbMensaje;
@@ -53,6 +51,8 @@ public class LoginViewController {
         }
 
         if (usuario != null) {
+            ModelFactory.getInstancia().setUsuarioActual(usuario);
+
             ModelFactory.getInstancia().setUsuarioActual(usuario);
 
             String rutaFXML = usuario.isEsAdmin()

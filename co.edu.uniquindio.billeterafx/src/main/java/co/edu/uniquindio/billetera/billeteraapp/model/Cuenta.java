@@ -1,12 +1,17 @@
 package co.edu.uniquindio.billetera.billeteraapp.model;
 
 import co.edu.uniquindio.billetera.billeteraapp.model.builder.CuentaBuilder;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 
 public class Cuenta {
+
     private String idCuenta;
     private String nombreBanco;
     private String numeroCuenta;
     private String tipoCuenta;
+
+    private DoubleProperty saldo = new SimpleDoubleProperty(0.0);
 
     public Cuenta(String idCuenta,
                   String nombreBanco,
@@ -16,6 +21,7 @@ public class Cuenta {
         this.nombreBanco = nombreBanco;
         this.numeroCuenta = numeroCuenta;
         this.tipoCuenta = tipoCuenta;
+        this.saldo = new SimpleDoubleProperty(0.0);
     }
 
     public String getIdCuenta() {
@@ -50,8 +56,25 @@ public class Cuenta {
         this.tipoCuenta = tipoCuenta;
     }
 
+    public double getSaldo() {
+        return saldo.get();
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo.set(saldo);
+    }
+
+    public DoubleProperty saldoProperty() {
+        return saldo;
+    }
+
+
     public static CuentaBuilder builder() {
         return new CuentaBuilder();
     }
 
+    @Override
+    public String toString() {
+        return nombreBanco + " - " + numeroCuenta;
+    }
 }

@@ -118,12 +118,8 @@ public class UsuariosViewController {
     }
 
     private void agregarUsuario() {
-        //1. Captura los datos del formulario
-        //2. Armar un Dto con los datos
         UsuarioDto usuarioDto = crearUsuarioDto();
-        //3.Validar campos
         if(datosValidos(usuarioDto)){
-            //4. Solicitar crear usuario
             if(usuarioController.agregarUsuario(usuarioDto)){
                 listaUsuarios.add(usuarioDto);
                 limpiarCampos();
@@ -132,7 +128,6 @@ public class UsuariosViewController {
                 mostrarMensaje(TITULO_USUARIO_NO_AGREGADO, HEADER, BODY_USUARIO_NO_AGREGADO,Alert.AlertType.ERROR);
             }
         }else{
-            //mensaje de notificacion de campos incompletos
             mostrarMensaje(TITULO_INCOMPLETO, HEADER, BODY_INCOMPLETO,Alert.AlertType.WARNING);
         }
     }

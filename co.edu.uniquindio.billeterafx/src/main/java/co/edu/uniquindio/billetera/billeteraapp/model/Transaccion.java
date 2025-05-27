@@ -4,30 +4,33 @@ public class Transaccion {
     private String idTransaccion;
     private String fecha;
     private String tipoTransaccion;
-    private String monto;
-    private String descripcion;
-    private String cuentaAsociada;
+    private double monto;
+    private Cuenta cuentaOrigen;
+    private Cuenta cuentaDestino;
 
-    public Transaccion(String idTransaccion,
-                       String fecha,
-                       String tipoTransaccion,
-                       String monto,
-                       String descripcion,
-                       String cuentaAsociada) {
+    public Transaccion(String idTransaccion, String fecha, String tipoTransaccion, double monto, Cuenta cuentaOrigen, Cuenta cuentaDestino) {
         this.idTransaccion = idTransaccion;
         this.fecha = fecha;
         this.tipoTransaccion = tipoTransaccion;
         this.monto = monto;
-        this.descripcion = descripcion;
-        this.cuentaAsociada = cuentaAsociada;
+        this.cuentaOrigen = cuentaOrigen;
+        this.cuentaDestino = cuentaDestino;
     }
 
-    public String getIdTransaccion() {
-        return idTransaccion;
+    public Cuenta getCuentaDestino() {
+        return cuentaDestino;
     }
 
-    public void setIdTransaccion(String idTransaccion) {
-        this.idTransaccion = idTransaccion;
+    public void setCuentaDestino(Cuenta cuentaDestino) {
+        this.cuentaDestino = cuentaDestino;
+    }
+
+    public Cuenta getCuentaOrigen() {
+        return cuentaOrigen;
+    }
+
+    public void setCuentaOrigen(Cuenta cuentaOrigen) {
+        this.cuentaOrigen = cuentaOrigen;
     }
 
     public String getFecha() {
@@ -38,6 +41,22 @@ public class Transaccion {
         this.fecha = fecha;
     }
 
+    public String getIdTransaccion() {
+        return idTransaccion;
+    }
+
+    public void setIdTransaccion(String idTransaccion) {
+        this.idTransaccion = idTransaccion;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
     public String getTipoTransaccion() {
         return tipoTransaccion;
     }
@@ -46,27 +65,8 @@ public class Transaccion {
         this.tipoTransaccion = tipoTransaccion;
     }
 
-    public String getMonto() {
-        return monto;
-    }
-
-    public void setMonto(String monto) {
-        this.monto = monto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getCuentaAsociada() {
-        return cuentaAsociada;
-    }
-
-    public void setCuentaAsociada(String cuentaAsociada) {
-        this.cuentaAsociada = cuentaAsociada;
+    @Override
+    public String toString() {
+        return tipoTransaccion + " de $" + monto + " de " + cuentaOrigen.getNombreBanco() + " a " + cuentaDestino.getNombreBanco();
     }
 }

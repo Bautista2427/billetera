@@ -1,36 +1,41 @@
 package co.edu.uniquindio.billetera.billeteraapp.factory;
 
-import co.edu.uniquindio.billetera.billeteraapp.mapping.dto.CuentaDto;
 import co.edu.uniquindio.billetera.billeteraapp.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.billetera.billeteraapp.mapping.mappers.MappingImpl;
 import co.edu.uniquindio.billetera.billeteraapp.model.Cuenta;
 import co.edu.uniquindio.billetera.billeteraapp.model.Usuario;
 import co.edu.uniquindio.billetera.billeteraapp.model.GestorUsuarios;
 import co.edu.uniquindio.billetera.billeteraapp.model.GestorCuentas;
-import co.edu.uniquindio.billetera.billeteraapp.service.IModelFactoryService;
 import co.edu.uniquindio.billetera.billeteraapp.service.IMapping;
+import co.edu.uniquindio.billetera.billeteraapp.service.IModelFactoryService;
+import co.edu.uniquindio.billetera.billeteraapp.service.Observer;
+import co.edu.uniquindio.billetera.billeteraapp.service.Subject;
 import co.edu.uniquindio.billetera.billeteraapp.utils.DataUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ModelFactory implements IModelFactoryService {
+public class ModelFactory implements IModelFactoryService, Subject {
     private static ModelFactory modelFactory;
-    private IMapping mapper;
     private GestorUsuarios gestorUsuarios;
     private GestorCuentas gestorCuentas;
     private Usuario usuarioActual;
 
+    private List<Observer> observers = new ArrayList<>();
+
+    private IMapping mapper;
+
     public static ModelFactory getInstancia() {
-        if(modelFactory == null) {
+        if (modelFactory == null) {
             modelFactory = new ModelFactory();
         }
         return modelFactory;
     }
 
-    private ModelFactory(){
-        mapper = new MappingImpl();
+    private ModelFactory() {
         gestorUsuarios = DataUtil.inicializarDatos();
         gestorCuentas = DataUtil.inicializarDatosCuentas();
+        this.mapper = new MappingImpl();
     }
 
     public Usuario getUsuarioActual() {
@@ -50,7 +55,6 @@ public class ModelFactory implements IModelFactoryService {
     public boolean agregarUsuario(UsuarioDto usuarioDto) {
         Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
         return gestorUsuarios.crearUsuario(usuario);
-        //return gestorUsuarios.crearUsuario(mapper.usuarioDtoToUsuario(usuarioDto));
     }
 
     public boolean actualizarUsuario(UsuarioDto usuarioDto) {
@@ -70,34 +74,33 @@ public class ModelFactory implements IModelFactoryService {
         return gestorUsuarios.eliminarUsuario(cedula);
     }
 
-
-
-
-    @Override
-    public List<CuentaDto> obtenerCuentas() {
+    public List<Cuenta> obtenerCuentas() {
         if (usuarioActual == null) {
-            return List.of();
+            return new ArrayList<>();
         }
 
         if (usuarioActual.isEsAdmin()) {
-            return mapper.getCuentasDto(gestorCuentas.getListaCuentas());
+            return gestorCuentas.getListaCuentas();
         }
 
-        return mapper.getCuentasDto(usuarioActual.getListaCuentas());
+        return usuarioActual.getListaCuentas();
     }
 
-    @Override
-    public boolean agregarCuenta(CuentaDto cuentaDto) {
-        Cuenta cuenta = mapper.cuentaDtoToCuenta(cuentaDto);
-        return gestorCuentas.crearCuenta(cuenta);
-        //return gestorCuentas.crearCuenta(mapper.cuentaDtoToUsuario(cuentaDto));
+    public boolean agregarCuenta(Cuenta cuenta) {
+        boolean creada = gestorCuentas.crearCuenta(cuenta);
+        if (creada) {
+            if (usuarioActual != null) {
+                usuarioActual.getListaCuentas().add(cuenta);
+                notificarObservers();
+            }
+        }
+        return creada;
     }
 
-    public boolean actualizarCuenta(CuentaDto cuentaDto) {
+    public boolean actualizarCuenta(Cuenta cuentaActualizada) {
         List<Cuenta> listaCuentas = gestorCuentas.getListaCuentas();
         for (int i = 0; i < listaCuentas.size(); i++) {
-            if (listaCuentas.get(i).getIdCuenta().equals(cuentaDto.idCuenta())) {
-                Cuenta cuentaActualizada = mapper.cuentaDtoToCuenta(cuentaDto);
+            if (listaCuentas.get(i).getIdCuenta().equals(cuentaActualizada.getIdCuenta())) {
                 listaCuentas.set(i, cuentaActualizada);
                 return true;
             }
@@ -105,16 +108,34 @@ public class ModelFactory implements IModelFactoryService {
         return false;
     }
 
-    @Override
     public boolean eliminarCuenta(String idCuenta) {
-        return gestorCuentas.eliminarCuenta(idCuenta);
+        boolean eliminada = gestorCuentas.eliminarCuenta(idCuenta);
+        if (eliminada && usuarioActual != null) {
+            usuarioActual.getListaCuentas().removeIf(cuenta -> cuenta.getIdCuenta().equals(idCuenta));
+            notificarObservers();
+        }
+        return eliminada;
     }
 
-    public IMapping getMapper() {
-        return mapper;
-    }
 
     public GestorUsuarios getGestorUsuarios() {
         return gestorUsuarios;
+    }
+
+    @Override
+    public void agregarObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void eliminarObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notificarObservers() {
+        for (Observer observer : observers) {
+            observer.actualizar();
+        }
     }
 }

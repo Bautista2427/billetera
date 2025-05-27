@@ -15,7 +15,7 @@
                   <TextField fx:id="txtNumeroCuenta" layoutX="293.0" layoutY="121.0" />
                   <TextField fx:id="txtBanco" layoutX="293.0" layoutY="81.0" />
                   <TextField fx:id="txtIdCuenta" layoutX="293.0" layoutY="41.0" />
-                  <ComboBox fx:id="cmbTipoCuenta" layoutX="293.0" layoutY="161.0" onAction="#OnTipoCuenta" prefHeight="31.0" prefWidth="187.0" />
+                  <ComboBox fx:id="cmbTipoCuenta" layoutX="293.0" layoutY="161.0" prefHeight="31.0" prefWidth="187.0" />
                   <Label layoutX="146.0" layoutY="42.0" text="ID Cuenta:" />
                   <Label layoutX="146.0" layoutY="86.0" text="Banco:" />
                   <Label layoutX="146.0" layoutY="126.0" text="Número de cuenta:" />
@@ -30,10 +30,11 @@
                   <Button fx:id="btnEliminar" layoutX="686.0" layoutY="187.0" mnemonicParsing="false" onAction="#OnEliminar" text="Eliminar" />
                   <TableView fx:id="tableCuentas" layoutX="13.0" layoutY="14.0" prefHeight="165.0" prefWidth="748.0">
                     <columns>
-                      <TableColumn fx:id="tcIdCuenta" prefWidth="177.0" text="ID Cuenta" />
-                      <TableColumn fx:id="tcBanco" minWidth="5.0" prefWidth="196.0" text="Banco" />
-                        <TableColumn fx:id="tcNumeroCuenta" minWidth="0.0" prefWidth="178.0" text="Número de cuenta" />
-                        <TableColumn fx:id="tcTipoCuenta" prefWidth="196.0" text="Tipo de cuenta" />
+                      <TableColumn fx:id="tcIdCuenta" prefWidth="143.0" text="ID Cuenta" />
+                      <TableColumn fx:id="tcBanco" minWidth="5.0" prefWidth="150.0" text="Banco" />
+                        <TableColumn fx:id="tcNumeroCuenta" minWidth="0.0" prefWidth="158.0" text="Número de cuenta" />
+                        <TableColumn fx:id="tcTipoCuenta" prefWidth="151.0" text="Tipo de cuenta" />
+                        <TableColumn fx:id="tcSaldo" prefWidth="145.0" text="Saldo" />
                     </columns>
                   </TableView>
                </children>

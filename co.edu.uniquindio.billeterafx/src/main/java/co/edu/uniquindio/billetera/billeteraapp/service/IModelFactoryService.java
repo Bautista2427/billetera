@@ -1,6 +1,6 @@
 package co.edu.uniquindio.billetera.billeteraapp.service;
 
-import co.edu.uniquindio.billetera.billeteraapp.mapping.dto.CuentaDto;
+import co.edu.uniquindio.billetera.billeteraapp.model.Cuenta;
 import co.edu.uniquindio.billetera.billeteraapp.mapping.dto.UsuarioDto;
 
 import java.util.List;
@@ -15,11 +15,11 @@ public interface IModelFactoryService {
     boolean eliminarUsuario(String cedula);
 
 
-    List<CuentaDto> obtenerCuentas();
+    List<Cuenta> obtenerCuentas();
 
-    boolean agregarCuenta(CuentaDto cuentaDto);
+    boolean agregarCuenta(Cuenta cuenta);
 
-    boolean actualizarCuenta(CuentaDto cuentaDto);
+    boolean actualizarCuenta(Cuenta cuenta);
 
     boolean eliminarCuenta(String idCuenta);
 }
